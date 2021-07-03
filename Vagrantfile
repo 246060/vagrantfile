@@ -22,7 +22,10 @@ Vagrant.configure("2") do |config|
 	  
 		node.vm.provision "shell", inline: <<-SHELL
 			yum install -y epel-release
-			yum install -y ansible vim
+			yum update
+			yum install -y vim wget
+			sed -i -e 's/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_config
+			systemctl restart sshd
 		SHELL
 	
   end
@@ -40,7 +43,11 @@ Vagrant.configure("2") do |config|
 		end
 		
 		node.vm.provision "shell", inline: <<-SHELL
-			yum install -y vim
+			yum install -y epel-release
+			yum update
+			yum install -y vim wget
+			sed -i -e 's/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_config
+			systemctl restart sshd
 		SHELL
 		
   end
@@ -57,7 +64,11 @@ Vagrant.configure("2") do |config|
 		end
 		
 		node.vm.provision "shell", inline: <<-SHELL
-			yum install -y vim
+			yum install -y epel-release
+			yum update
+			yum install -y vim wget
+			sed -i -e 's/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_config
+			systemctl restart sshd
 		SHELL
 		
   end
